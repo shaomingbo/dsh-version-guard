@@ -1,0 +1,8 @@
+# Optional DeepSeek Harness Web version-guard bundle.
+# Installed through `npx --yes github:shaomingbo/dsh-version-guard#v0.1.0`.
+# Host half owns npm/GitHub polling and the loopback RPC channel; the client
+# half owns the sidebar entry and the update panel.
+
+- insert:
+    - id: dsh-version-guard
+      name: dsh-version-guard
