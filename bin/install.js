@@ -8,7 +8,7 @@ import { join, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const PACKAGE_NAME = 'dsh-version-guard'
-export const DEFAULT_SOURCE = 'github:shaomingbo/dsh-version-guard#v0.1.0'
+export const DEFAULT_SOURCE = 'github:shaomingbo/dsh-version-guard#v0.1.1'
 const COMMANDS = ['install', 'status', 'uninstall']
 
 export function parseArgs(argv) {

@@ -28,7 +28,7 @@ Data sources: the npm registry packument for `@deepseek-ai/dsh` (dist-tags + pub
 Preferred — install the fixed release tag with the package's own no-argument installer:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.0
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.1
 ```
 
 No arguments is the same as `install`. The installer only edits `dependencies.dsh-version-guard` and `dsh.profile.bundles` in the target profile's `package.json` (default profile `web`), writes it atomically, then runs `pnpm install --ignore-scripts` in that profile directory. It never stops or restarts DSH.
@@ -36,19 +36,19 @@ No arguments is the same as `install`. The installer only edits `dependencies.ds
 Check installation state:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.0 status
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 status
 ```
 
 Remove it (idempotent — safe to run twice, restores the manifest if dependency installation fails):
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.0 uninstall
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 uninstall
 ```
 
 Options available to every command: `--profile <name>` (default `web`), `--source <source>`, `-h`/`--help`. The default source is pinned to the current SemVer tag; you can also point it at a local checkout with `link:`:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.0 --source link:/path/to/dsh-version-guard
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 --source link:/path/to/dsh-version-guard
 ```
 
 After installing or uninstalling: restart `dsh web` manually, then hard-refresh the browser.
@@ -58,7 +58,7 @@ Manual fallback — edit `~/.dsh/profiles/web/package.json` yourself:
 ```json
 {
   "dependencies": {
-    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.0"
+    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.1"
   },
   "dsh": {
     "profile": {
