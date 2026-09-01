@@ -45,4 +45,6 @@ test('browser bundle ships both locale dictionaries', async () => {
   const source = await readFile(clientPath, 'utf8')
   assert.match(source, /nav: '版本守卫'/)
   assert.match(source, /nav: 'Version Guard'/)
+  assert.match(source, /currentChannelBadge: '当前通道'/)
+  assert.match(source, /currentChannelBadge: 'Current'/)
 })

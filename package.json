@@ -1,6 +1,6 @@
 {
   "name": "dsh-version-guard",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "DSH version update notifier: checks npm dist-tags for new @deepseek-ai/dsh releases, surfaces changelogs in the Web GUI, and prints the exact pinned launch command. Never touches the DSH core.",
   "type": "module",
   "main": "lib/index.js",
