@@ -2,7 +2,7 @@
 
 DSH version update notifier for [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web.
 
-A sidebar entry shows the running DSH version and lights up when npm publishes a newer release. Open the panel to read the release notes and copy the exact pinned launch command. It is a GitHub-distributed DSH bundle, not a shell modification — it never stops, restarts, patches, or upgrades DSH itself.
+A Settings section shows the running DSH version and lights up when npm publishes a newer release, with the release notes and the exact pinned launch command. It is a GitHub-distributed DSH bundle, not a shell modification — it never stops, restarts, patches, or upgrades DSH itself.
 
 ## Why
 
@@ -16,8 +16,8 @@ resolves the `latest` dist-tag — which can lag behind (or trail) the `alpha` c
 
 | Surface | Behavior |
 |---|---|
-| Sidebar entry | `✓ 0.1.2-alpha.3` when current, `↑ <version>` when npm has something newer, `?` when the version cannot be detected |
-| Panel | Current version, last check time, recommendation (with its dist-tag and channel match), bilingual release notes, dist-tag table |
+| Settings section (设置 → Version Guard) | Current version, last check time, recommendation (with its dist-tag and channel match), bilingual release notes, dist-tag table |
+| Placement note | Lives only in Settings — the sidebar footer belongs to the plugins that own it |
 | Launch command | Always pinned to an exact version — never a floating tag |
 | Polling | One registry check at boot, then hourly (in-memory only; nothing is written to disk) |
 
@@ -28,7 +28,7 @@ Data sources: the npm registry packument for `@deepseek-ai/dsh` (dist-tags + pub
 Preferred — install the fixed release tag with the package's own no-argument installer:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2
 ```
 
 No arguments is the same as `install`. The installer only edits `dependencies.dsh-version-guard` and `dsh.profile.bundles` in the target profile's `package.json` (default profile `web`), writes it atomically, then runs `pnpm install --ignore-scripts` in that profile directory. It never stops or restarts DSH.
@@ -36,19 +36,19 @@ No arguments is the same as `install`. The installer only edits `dependencies.ds
 Check installation state:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 status
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 status
 ```
 
 Remove it (idempotent — safe to run twice, restores the manifest if dependency installation fails):
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 uninstall
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 uninstall
 ```
 
 Options available to every command: `--profile <name>` (default `web`), `--source <source>`, `-h`/`--help`. The default source is pinned to the current SemVer tag; you can also point it at a local checkout with `link:`:
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 --source link:/path/to/dsh-version-guard
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 --source link:/path/to/dsh-version-guard
 ```
 
 After installing or uninstalling: restart `dsh web` manually, then hard-refresh the browser.
@@ -58,7 +58,7 @@ Manual fallback — edit `~/.dsh/profiles/web/package.json` yourself:
 ```json
 {
   "dependencies": {
-    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.1"
+    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.2"
   },
   "dsh": {
     "profile": {

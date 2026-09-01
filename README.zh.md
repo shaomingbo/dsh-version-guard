@@ -2,7 +2,7 @@
 
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 的 DSH 版本更新提醒插件。
 
-侧栏入口显示当前运行的 DSH 版本，npm 发布新版本时点亮更新徽标；打开面板即可阅读更新日志并复制固定版本的启动命令。它是 GitHub 分发的 DSH bundle，不是 shell 改动 —— 从不停止、重启、修改或升级 DSH 本身。
+设置页的「版本守卫」分区显示当前运行的 DSH 版本，npm 发布新版本时显示推荐版本、更新日志与固定版本的启动命令。它是 GitHub 分发的 DSH bundle，不是 shell 改动 —— 从不停止、重启、修改或升级 DSH 本身。
 
 ## 为什么需要它
 
@@ -16,8 +16,8 @@ pnpm dlx @deepseek-ai/dsh@$(pnpm view @deepseek-ai/dsh version) web
 
 | 界面 | 行为 |
 |---|---|
-| 侧栏入口 | 已是最新时显示 `✓ 0.1.2-alpha.3`；npm 有新版时显示 `↑ <版本号>`；无法检测版本时显示 `?` |
-| 面板 | 当前版本、上次检查时间、推荐版本（含 dist-tag 与通道匹配说明）、双语更新日志、dist-tag 一览表 |
+| 设置分区（设置 → 版本守卫） | 当前版本、上次检查时间、推荐版本（含 dist-tag 与通道匹配说明）、双语更新日志、dist-tag 一览表 |
+| 位置说明 | 只出现在设置页 —— 侧栏底部空间留给拥有它的插件 |
 | 启动命令 | 始终固定精确版本 —— 从不使用浮动 tag |
 | 轮询 | 启动时检查一次，之后每小时一次（仅内存缓存，不写任何磁盘状态） |
 
@@ -28,7 +28,7 @@ pnpm dlx @deepseek-ai/dsh@$(pnpm view @deepseek-ai/dsh version) web
 首选 —— 使用包自带的无参数安装器安装固定 release tag：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2
 ```
 
 无参数等同 `install`。安装器只编辑目标 profile 的 `package.json`（默认 profile 为 `web`）中的 `dependencies.dsh-version-guard` 与 `dsh.profile.bundles`，原子写入后在 profile 目录运行 `pnpm install --ignore-scripts`。从不停止或重启 DSH。
@@ -36,19 +36,19 @@ npx --yes github:shaomingbo/dsh-version-guard#v0.1.1
 查看安装状态：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 status
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 status
 ```
 
 卸载（幂等 —— 重复执行安全；依赖安装失败时自动恢复 manifest）：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 uninstall
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 uninstall
 ```
 
 所有命令均支持：`--profile <name>`（默认 `web`）、`--source <source>`、`-h`/`--help`。默认 source 固定到当前 SemVer tag；也可以用 `link:` 指向本地源码：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 --source link:/path/to/dsh-version-guard
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 --source link:/path/to/dsh-version-guard
 ```
 
 安装或卸载后：手动重启 `dsh web`，并强制刷新浏览器页面。
@@ -58,7 +58,7 @@ npx --yes github:shaomingbo/dsh-version-guard#v0.1.1 --source link:/path/to/dsh-
 ```json
 {
   "dependencies": {
-    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.1"
+    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.2"
   },
   "dsh": {
     "profile": {
