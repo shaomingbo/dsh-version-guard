@@ -28,7 +28,7 @@ pnpm dlx @deepseek-ai/dsh@$(pnpm view @deepseek-ai/dsh version) web
 首选 —— 使用包自带的无参数安装器安装固定 release tag：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.2
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.3
 ```
 
 无参数等同 `install`。安装器只编辑目标 profile 的 `package.json`（默认 profile 为 `web`）中的 `dependencies.dsh-version-guard` 与 `dsh.profile.bundles`，原子写入后在 profile 目录运行 `pnpm install --ignore-scripts`。从不停止或重启 DSH。
@@ -36,19 +36,19 @@ npx --yes github:shaomingbo/dsh-version-guard#v0.1.2
 查看安装状态：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 status
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.3 status
 ```
 
 卸载（幂等 —— 重复执行安全；依赖安装失败时自动恢复 manifest）：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 uninstall
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.3 uninstall
 ```
 
 所有命令均支持：`--profile <name>`（默认 `web`）、`--source <source>`、`-h`/`--help`。默认 source 固定到当前 SemVer tag；也可以用 `link:` 指向本地源码：
 
 ```bash
-npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 --source link:/path/to/dsh-version-guard
+npx --yes github:shaomingbo/dsh-version-guard#v0.1.3 --source link:/path/to/dsh-version-guard
 ```
 
 安装或卸载后：手动重启 `dsh web`，并强制刷新浏览器页面。
@@ -58,7 +58,7 @@ npx --yes github:shaomingbo/dsh-version-guard#v0.1.2 --source link:/path/to/dsh-
 ```json
 {
   "dependencies": {
-    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.2"
+    "dsh-version-guard": "github:shaomingbo/dsh-version-guard#v0.1.3"
   },
   "dsh": {
     "profile": {

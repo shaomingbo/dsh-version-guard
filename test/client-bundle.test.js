@@ -5,11 +5,12 @@ import test from 'node:test'
 
 const clientPath = fileURLToPath(new URL('../lib/client.js', import.meta.url))
 
-test('browser bundle uses the DSH client-module handoff and the settings section', async () => {
+test('browser bundle uses the DSH client-module handoff, settings section, and header action', async () => {
   const source = await readFile(clientPath, 'utf8')
   assert.match(source, /window\.__ModuleLoader__\.load/)
   assert.match(source, /id: 'dsh-version-guard'/)
   assert.match(source, /settings\.section/)
+  assert.match(source, /settings\.action/)
   assert.match(source, /connection\.rpc\.call/)
   assert.match(source, /CHANNEL = '\/version-guard'/)
 })
